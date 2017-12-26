@@ -90,5 +90,4 @@ public class ExercisesAdapter extends BaseAdapter{
         public TextView title, content;
         public TextView order;
     }
-
 }
