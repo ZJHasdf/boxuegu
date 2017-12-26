@@ -13,6 +13,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import cn.edu.gdmec.android.boxuegu.R;
 import cn.edu.gdmec.android.boxuegu.adapter.ExercisesDetailAdapter;
 import cn.edu.gdmec.android.boxuegu.bean.ExercisesBean;
 
@@ -50,11 +52,13 @@ public class ExercisesDetailActivity extends AppCompatActivity{
         }
     }
     private void init() {
-        tv_main_title = (TextView) findViewById(R.id.tv_main_title);
+        tv_main_title = (TextView) findViewById(R.id.tv_mian_title);
         tv_back = (TextView) findViewById(R.id.tv_back);
         rl_title_bar = (RelativeLayout) findViewById(R.id.title_bar);
         rl_title_bar.setBackgroundColor(Color.parseColor("#3084FF"));
         TextView tv = new TextView(this);
         tv.setTextColor(Color.parseColor("#000000"));
+
+
     }
 }
