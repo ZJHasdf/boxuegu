@@ -6,7 +6,7 @@ package cn.edu.gdmec.android.boxuegu.bean;
 
 public class ExercisesBean {
     public int id;
-    public String imgTitle;
+    public String title;
     public String content;
     public int background;
     public int subjectId;
