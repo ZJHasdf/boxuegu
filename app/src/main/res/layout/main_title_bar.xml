@@ -12,7 +12,7 @@
         android:layout_alignParentLeft="true"
         android:background="@drawable/go_back_selector" />
     <TextView
-        android:id="@+id/tv_mian_title"
+        android:id="@+id/tv_main_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
