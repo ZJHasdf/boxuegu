@@ -13,9 +13,7 @@
             android:id="@+id/main_body"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
-            />
-
+            android:background="@android:color/white" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/main_bottom_bar"
@@ -28,8 +26,7 @@
             android:id="@+id/bottom_bar_course_btn"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
-            >
+            android:layout_weight="1">
             <TextView
                 android:id="@+id/bottm_bar_text_course"
                 android:layout_width="fill_parent"
@@ -41,8 +38,34 @@
                 android:singleLine="true"
                 android:text="课程"
                 android:textColor="#666666"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
+            <ImageView
+                android:id="@+id/bottm_bar_image_course"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_above="@+id/bottm_bar_text_course"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/main_course_icon" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/bottom_bar_exercises_btn"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/bottm_bar_text_exercises"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="习题"
+                android:textColor="#666666"
+                android:textSize="14sp" />
             <ImageView
                 android:id="@+id/bottm_bar_image_exercises"
                 android:layout_width="27dp"
@@ -51,8 +74,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
-                android:src="@drawable/main_exercises_icon"
-                />
+                android:src="@drawable/main_exercises_icon" />
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/bottom_bar_myinfo_btn"
@@ -70,8 +92,7 @@
                 android:singleLine="true"
                 android:text="我"
                 android:textColor="#666666"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
             <ImageView
                 android:id="@+id/bottm_bar_image_myinfo"
                 android:layout_width="27dp"
@@ -80,8 +101,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
-                android:src="@drawable/main_exercises_icon"
-                />
+                android:src="@drawable/main_my_icon" />
 
         </RelativeLayout>
     </LinearLayout>

@@ -62,9 +62,9 @@ public class ExercisesDetailAdapter extends BaseAdapter{
             vh.tv_c=(TextView) view.findViewById(R.id.tv_c);
             vh.tv_d=(TextView) view.findViewById(R.id.tv_d);
             vh.iv_a=(ImageView) view.findViewById(R.id.iv_a);
-            vh.iv_b=(ImageView) view.findViewById(R.id.iv_b);
+           /* vh.iv_b=(ImageView) view.findViewById(R.id.iv_b);
             vh.iv_c=(ImageView) view.findViewById(R.id.iv_c);
-            vh.iv_d=(ImageView) view.findViewById(R.id.iv_d);
+            vh.iv_d=(ImageView) view.findViewById(R.id.iv_d);*/
             view.setTag(vh);
         }else {
             vh=(ViewHolder) view.getTag();

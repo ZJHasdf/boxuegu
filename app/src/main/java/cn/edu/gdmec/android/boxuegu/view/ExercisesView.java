@@ -16,14 +16,14 @@ import cn.edu.gdmec.android.boxuegu.bean.ExercisesBean;
  * Created by student on 17/12/26.
  */
 
-public class ExerciseView {
+public class ExercisesView {
     private ListView lv_list;
     private ExercisesAdapter adapter;
     private List<ExercisesBean> ebl;
     private Activity mContext;
     private LayoutInflater mInflater;
     private View mCurrentView;
-    public ExerciseView(Activity context){
+    public ExercisesView(Activity context){
         mContext = context;
         mInflater = LayoutInflater.from(mContext);
     }

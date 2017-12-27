@@ -1,8 +1,13 @@
 package cn.edu.gdmec.android.boxuegu.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -11,9 +16,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cn.edu.gdmec.android.boxuegu.R;
+import cn.edu.gdmec.android.boxuegu.view.ExercisesView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-/*
+
 //    视图
     private ExercisesView mExercisesView;
     private FrameLayout mBodyLayout;
@@ -53,9 +59,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_main_title = (TextView) findViewById(R.id.tv_mian_title);
         tv_main_title.setText("博学谷课程");
         rl_title_bar = (RelativeLayout) findViewById(R.id.title_bar);
+        rl_title_bar.setBackgroundColor(Color.parseColor("#30B4FF"));
         tv_back.setVisibility(View.GONE);
         initBodyLayout();
     }
+
+
     private void initBottmBar() {
         mBottomLayout = (LinearLayout) findViewById(R.id.main_bottom_bar);
         mCourseBtn = findViewById(R.id.bottm_bar_course_btn);
@@ -68,14 +77,160 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         iv_exercises = (ImageView) findViewById(R.id.bottm_bar_image_exercises);
         iv_myInfo = (ImageView) findViewById(R.id.bottm_bar_image_myinfo);
     }
+    private void initBodyLayout() {
+         mBodyLayout = (FrameLayout) findViewById(R.id.main_body);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+    switch (v.getId()){
+        case R.id.bottm_bar_course_btn:
+            clearBottomImageState();
+            selectDisplayView(0);
+            break;
+        case R.id.bottm_bar_exercises_btn:
+            clearBottomImageState();
+            selectDisplayView(1);
+            break;
+        case R.id.bottm_bar_myinfo_btn:
+            clearBottomImageState();
+            selectDisplayView(2);
+            break;
+        default:
+            break;
+
+    }
+    }
+
+
 
     private void setListener() {
+        for (int i = 0; i< mBottomLayout.getChildCount(); i++){
+            mBottomLayout.getChildAt(i).setOnClickListener(this);
+        }
     }
-    private void setInitStatus() {
-    } */
-    @Override
-    public void onClick(View view) {
+    private void clearBottomImageState() {
+        tv_course.setTextColor(Color.parseColor("#666666"));
+        tv_exercises.setTextColor(Color.parseColor("#666666"));
+        tv_myInfo.setTextColor(Color.parseColor("#666666"));
+        iv_course.setImageResource(R.drawable.main_course_icon);
+        iv_exercises.setImageResource(R.drawable.main_exercises_icon);
+        iv_myInfo.setImageResource(R.drawable.main_my_icon);
+        for (int i = 0; i<mBottomLayout.getChildCount();i++){
+            mBottomLayout.getChildAt(i).setSelected(false);
+        }
+    }
+    private void setInitStatus(int index) {
+        switch (index){
+            case 0:
+                mCourseBtn.setSelected(true);
+                iv_course.setImageResource(R.drawable.main_course_icon_selected);
+                tv_course.setTextColor(Color.parseColor("#0097F7"));
+                rl_title_bar.setVisibility(View.VISIBLE);
+                tv_main_title.setText("博学谷课程");
+                break;
+            case 1:
+                mExercisesBtn.setSelected(true);
+                iv_exercises
+                        .setImageResource(R.drawable.main_course_icon_selected);
+                tv_exercises.setTextColor(Color.parseColor("#0097F7"));
+                rl_title_bar.setVisibility(View.VISIBLE);
+                tv_main_title.setText("博学谷习题");
+                break;
+            case 2:
+                mMyInfoBtn.setSelected(true);
+                iv_myInfo
+                        .setImageResource(R.drawable.main_course_icon_selected);
+                tv_myInfo.setTextColor(Color.parseColor("#0097F7"));
+                rl_title_bar.setVisibility(View.GONE);
+        }
+    }
+    private void removeAllView(){
+        for (int i = 0; i<mBottomLayout.getChildCount();i++){
+            mBodyLayout.getChildAt(i).setVisibility(View.GONE);
+        }
+    }
+    private void setInitStatus(){
+        clearBottomImageState();
+        setSelectedStatus(0);
+        createView(0);
 
+    }
+
+    public void setSelectedStatus(int index) {
+        removeAllView();
+        createView(0);
+        setSelectedStatus(index);
+    }
+    private void selectDisplayView(int index) {
+        removeAllView();
+        createView(index);
+        setSelectedStatus(index);
+    }
+
+    private void createView(int viewIndex) {
+        switch (viewIndex){
+            case 0:
+                break;
+            case 1:
+                if (mExercisesView == null) {
+                    mExercisesView = new ExercisesView(this);
+                    mBodyLayout.addView(mExercisesView.getView());
+                }else {
+                    mExercisesView.getView();
+                }
+                mExercisesView.showView();
+                break;
+            case 2:
+                break;
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data!=null){
+            boolean isLogin=data.getBooleanExtra("isLogin",false);
+            if (isLogin){
+                clearBottomImageState();
+                selectDisplayView(0);
+
+            }
+        }
+    }
+    protected long exitTime;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN  ){
+            if ((System.currentTimeMillis()- exitTime)>2000) {
+                exitTime = System.currentTimeMillis();
+            }else {
+                MainActivity.this.finish();
+                if (readLoginStatus()){
+                    clearLoginStatus();
+
+                }
+                System.exit(0);
+            }
+            return  true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private boolean readLoginStatus() {
+        SharedPreferences sp = getSharedPreferences("LoginInfo",
+                Context.MODE_PRIVATE);
+        boolean isLogin = sp.getBoolean("isLogin",false);
+        return isLogin;
+    }
+    private void clearLoginStatus(){
+        SharedPreferences sp = getSharedPreferences("LoginInfo",
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("isLogin",false);
+        editor.putString("loginUserName","");
+        editor.commit();
     }
 
 }
