@@ -75,7 +75,7 @@ public class AnalysisUtils {
         iv_d.setEnabled(value);
     }
 
-    
+
     //解析每章的课程视频信息
     public static List<List<CourseBean>> getCourseInfos(InputStream is) throws Exception {
         XmlPullParser parser= Xml.newPullParser();
