@@ -50,7 +50,8 @@ public class ExercisesDetailActivity extends AppCompatActivity{
         try {
             InputStream is = getResources().getAssets().open(
             "chapter" + id + ".xml");
-        } catch (IOException e) {
+            ebl=AnalysisUtils.getExercisesInfos(is);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -58,7 +59,8 @@ public class ExercisesDetailActivity extends AppCompatActivity{
         tv_main_title = (TextView) findViewById(R.id.tv_main_title);
         tv_back = (TextView) findViewById(R.id.tv_back);
         rl_title_bar = (RelativeLayout) findViewById(R.id.title_bar);
-        rl_title_bar.setBackgroundColor(Color.parseColor("#3084FF"));
+        rl_title_bar.setBackgroundColor(Color.parseColor("#30B4FF"));
+        lv_list=(ListView) findViewById(R.id.lv_list);
         TextView tv = new TextView(this);
         tv.setTextColor(Color.parseColor("#000000"));
         tv.setTextSize(16.0f);

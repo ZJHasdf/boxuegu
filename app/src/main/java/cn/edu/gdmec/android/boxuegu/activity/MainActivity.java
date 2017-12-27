@@ -22,10 +22,10 @@ import cn.edu.gdmec.android.boxuegu.view.ExercisesView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-//    视图
+    //    视图
     private ExercisesView mExercisesView;
     private FrameLayout mBodyLayout;
-    public LinearLayout mBottomLayout;
+    private LinearLayout mBottomLayout;
 
 
     private View mCourseBtn;
@@ -73,9 +73,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initBottomBar() {
         mBottomLayout = (LinearLayout) findViewById(R.id.main_bottom_bar);
-        mCourseBtn = findViewById(R.id.bottm_bar_course_btn);
-        mExercisesBtn = findViewById(R.id.bottm_bar_exercises_btn);
-        mMyInfoBtn = findViewById(R.id.bottm_bar_myinfo_btn);
+        mCourseBtn = findViewById(R.id.bottom_bar_course_btn);
+        mExercisesBtn = findViewById(R.id.bottom_bar_exercises_btn);
+        mMyInfoBtn = findViewById(R.id.bottom_bar_myinfo_btn);
 
         tv_course = (TextView) findViewById(R.id.bottom_bar_text_course);
         tv_exercises = (TextView) findViewById(R.id.bottom_bar_text_exercises);
@@ -86,29 +86,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         iv_myInfo = (ImageView) findViewById(R.id.bottom_bar_image_myinfo);
     }
     private void initBodyLayout() {
-         mBodyLayout = (FrameLayout) findViewById(R.id.main_body);
+        mBodyLayout = (FrameLayout) findViewById(R.id.main_body);
     }
 
 
     @Override
     public void onClick(View v) {
-    switch (v.getId()){
-        case R.id.bottm_bar_course_btn:
-            clearBottomImageState();
-            selectDisplayView(0);
-            break;
-        case R.id.bottm_bar_exercises_btn:
-            clearBottomImageState();
-            selectDisplayView(1);
-            break;
-        case R.id.bottm_bar_myinfo_btn:
-            clearBottomImageState();
-            selectDisplayView(2);
-            break;
-        default:
-            break;
+        switch (v.getId()){
+            case R.id.bottom_bar_course_btn:
+                clearBottomImageState();
+                selectDisplayView(0);
+                break;
+            case R.id.bottom_bar_exercises_btn:
+                clearBottomImageState();
+                selectDisplayView(1);
+                break;
+            case R.id.bottom_bar_myinfo_btn:
+                clearBottomImageState();
+                selectDisplayView(2);
+                break;
+            default:
+                break;
 
-    }
+        }
     }
 
 
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     private void removeAllView(){
-        for (int i = 0; i<mBottomLayout.getChildCount();i++){
+        for (int i = 0; i<mBodyLayout.getChildCount();i++){
             mBodyLayout.getChildAt(i).setVisibility(View.GONE);
         }
     }
@@ -213,6 +213,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getAction() == KeyEvent.ACTION_DOWN  ){
             if ((System.currentTimeMillis()- exitTime)>2000) {
+                Toast.makeText(MainActivity.this,"再按一次退出博学谷",Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             }else {
                 MainActivity.this.finish();
