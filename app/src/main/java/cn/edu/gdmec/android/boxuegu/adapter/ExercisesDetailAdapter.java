@@ -36,6 +36,7 @@ public class ExercisesDetailAdapter extends BaseAdapter{
         return ebl == null ? 0 : ebl.size();
     }
 
+
     @Override
     public ExercisesBean getItem(int i) {
         return ebl == null ? null : ebl.get(i);
