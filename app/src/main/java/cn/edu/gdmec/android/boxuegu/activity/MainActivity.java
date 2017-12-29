@@ -18,12 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import cn.edu.gdmec.android.boxuegu.R;
+import cn.edu.gdmec.android.boxuegu.view.CourseView;
 import cn.edu.gdmec.android.boxuegu.view.ExercisesView;
+import cn.edu.gdmec.android.boxuegu.view.MyInfoView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //    视图
+    private ExercisesView mCourseView;
     private ExercisesView mExercisesView;
+    private MyInfoView mMyInfoView;
     private FrameLayout mBodyLayout;
     private LinearLayout mBottomLayout;
 
@@ -104,6 +108,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bottom_bar_myinfo_btn:
                 clearBottomImageState();
                 selectDisplayView(2);
+                    if (mMyInfoView != null){
+                        mMyInfoView.setLoginparams(readLoginStatus());
+
+                    }
                 break;
             default:
                 break;
@@ -166,12 +174,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    /*public void setSelectedStatus(int index) {
-        removeAllView();
-        createView(0);
-        setSelectedStatus(index);
-    }*/
-
     private void selectDisplayView(int index) {
         removeAllView();
         createView(index);
@@ -181,6 +183,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void createView(int viewIndex) {
         switch (viewIndex){
             case 0:
+                //课程界面
+                if (mCourseView==null){
+                    mCourseView=new CourseView(this);
+                    mBodyLayout.addView(mCourseView.getView());
+                }else{
+                    mCourseView.getView();
+                }
+                mCourseView.showView();
                 break;
             case 1:
                 if (mExercisesView == null) {
@@ -192,6 +202,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mExercisesView.showView();
                 break;
             case 2:
+                if (mMyInfoView==null){
+                    mMyInfoView=new MyInfoView(this);
+                    mBodyLayout.addView(mMyInfoView.getView());
+                }else{
+                    mMyInfoView.getView();
+                }
+                mMyInfoView.showView();
                 break;
         }
     }
@@ -203,7 +220,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (isLogin){
                 clearBottomImageState();
                 selectDisplayView(0);
-
+            }
+            if (mMyInfoView != null){
+                mMyInfoView.setLoginParams(isLogin);
             }
         }
     }
