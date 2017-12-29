@@ -57,7 +57,7 @@ public class AdBannerAdapter extends FragmentStatePagerAdapter implements View.O
     }
     @Override
     public boolean onTouch(View v, MotionEvent event){
-    // mHandler.removeMessages ( CourseView.MSG_AD_SLID );
+     mHandler.removeMessages ( CourseView.MSG_AD_SLID );
         return false;
     }
 }
