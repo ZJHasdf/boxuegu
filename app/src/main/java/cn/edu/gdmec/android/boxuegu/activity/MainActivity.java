@@ -25,7 +25,7 @@ import cn.edu.gdmec.android.boxuegu.view.MyInfoView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //    视图
-    private ExercisesView mCourseView;
+    private CourseView  mCourseView;
     private ExercisesView mExercisesView;
     private MyInfoView mMyInfoView;
     private FrameLayout mBodyLayout;
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 clearBottomImageState();
                 selectDisplayView(2);
                     if (mMyInfoView != null){
-                        mMyInfoView.setLoginparams(readLoginStatus());
+                        mMyInfoView.setLoginParams(readLoginStatus());
 
                     }
                 break;

@@ -25,7 +25,10 @@ public class CourseAdapter extends BaseAdapter {
     public CourseAdapter(Context context){
         this.mContext = context;
     }
-
+    public void setData(List<List<CourseBean>> cbl){
+        this.cbl = cbl;
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getCount() {

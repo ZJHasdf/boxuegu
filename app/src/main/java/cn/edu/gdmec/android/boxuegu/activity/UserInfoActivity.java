@@ -32,7 +32,9 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
     private TextView tv_user_name;
     private TextView tv_sex;
     private TextView tv_signature;
-    private UserBean value;
+    //private UserBean value;
+    private static final int CHANGE_NICKNAME = 1;
+    private static final int CHANGE_SIGNATURE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
