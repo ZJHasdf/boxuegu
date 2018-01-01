@@ -248,13 +248,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private boolean readLoginStatus() {
-        SharedPreferences sp = getSharedPreferences("LoginInfo",
+        SharedPreferences sp = getSharedPreferences("loginInfo",
                 Context.MODE_PRIVATE);
         boolean isLogin = sp.getBoolean("isLogin",false);
         return isLogin;
     }
     private void clearLoginStatus(){
-        SharedPreferences sp = getSharedPreferences("LoginInfo",
+        SharedPreferences sp = getSharedPreferences("loginInfo",
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isLogin",false);
