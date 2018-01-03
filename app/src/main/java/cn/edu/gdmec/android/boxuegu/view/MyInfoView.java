@@ -20,7 +20,7 @@ import cn.edu.gdmec.android.boxuegu.activity.UserInfoActivity;
 import cn.edu.gdmec.android.boxuegu.utils.AnalysisUtils;
 
 /**
- * Created by student on 17/12/28.
+ * Created by student on 17/12/27.
  */
 
 public class MyInfoView {
