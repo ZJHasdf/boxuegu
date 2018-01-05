@@ -40,7 +40,7 @@ public class SettingActivity extends AppCompatActivity {
         tv_back = (TextView) findViewById(R.id.tv_back);
         rl_title_bar = (RelativeLayout) findViewById(R.id.title_bar);
         rl_title_bar.setBackgroundColor(Color.parseColor("#30B4FF"));
-        rl_modify_psw = (RelativeLayout) findViewById(R.id.rl_modify_psw);
+        rl_modify_psw = (RelativeLayout) findViewById(R.id.rl_modiy_psw);
         rl_security_setting = (RelativeLayout) findViewById(R.id.rl_security_setting);
         rl_exit_login = (RelativeLayout) findViewById(R.id.rl_exit_login);
         tv_back.setOnClickListener(new View.OnClickListener() {

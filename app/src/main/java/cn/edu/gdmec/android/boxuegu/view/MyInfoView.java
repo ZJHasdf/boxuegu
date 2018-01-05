@@ -31,6 +31,10 @@ public class MyInfoView {
     private Activity mContext;
     private LayoutInflater mInflater;
     private View mCurrentView;
+
+
+
+
     public MyInfoView(Activity context){
         mContext= context;
         mInflater= LayoutInflater.from(mContext);

@@ -44,6 +44,8 @@ public class ChangeUserInfoActivity extends AppCompatActivity {
         title = getIntent ().getStringExtra ( "title" );
         content = getIntent ().getStringExtra ( "content" );
         flag = getIntent ().getIntExtra ( "flag", 0 );
+
+
         tv_main_title = (TextView) findViewById ( R.id.tv_main_title );
         tv_main_title.setText ( title );
         rl_title_bar = (RelativeLayout) findViewById ( R.id.title_bar );
@@ -99,6 +101,11 @@ public class ChangeUserInfoActivity extends AppCompatActivity {
                             Toast.makeText ( ChangeUserInfoActivity.this, "签名不能为空",
                                     Toast.LENGTH_SHORT).show ();
                         }
+                        break;
+                    case 3:
+                        System.out.println("flag=:case 3里面"+flag);
+                       // setContentView ( R.layout.img_iew );
+                       // iv_delete.setImageResource(R.drawable.default_icon);
                         break;
                 }
             }
